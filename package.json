@@ -2,7 +2,12 @@
   "name": "amorphous-fabric-strategy",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
+    "@bit/davidhu2000.react-spinners.scale-loader": "^0.5.1",
+    "@hocuspocus/extension-logger": "^1.0.0-alpha.28",
+    "@hocuspocus/extension-monitor": "^1.0.0-alpha.52",
+    "@hocuspocus/extension-rocksdb": "^1.0.0-alpha.54",
     "@hocuspocus/server": "^1.0.0-alpha.53",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,13 +20,14 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.0",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yjs": "^13.5.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"node ./src/server.js\" \"react-scripts start\"",
+    "react": "react-scripts start",
+    "server": "node ./src/server.js",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
