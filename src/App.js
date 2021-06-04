@@ -2,40 +2,50 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Main } from 'grommet';
 import { fabric } from 'fabric';
 import * as Y from 'yjs'
+import { WebrtcProvider } from 'y-webrtc'
 import { WebsocketProvider } from 'y-websocket'
-import { OnHeader } from './components/Header';
+import { IndexeddbPersistence } from 'y-indexeddb'
+import HeaderNav from './components/HeaderNav';
 import './App.css';
-import ScaleLoader from '@bit/davidhu2000.react-spinners.scale-loader';
+import Loader from './components/Loader';
+import Fabric from './components/Fabric';
+import useYDoc from './hooks/useYDoc';
 
 // Fabric lives in the global window object
 //const fabric = window.fabric
 
 function App() {
   // Fabric's canvas state
-  const [canvas, setCanvas] = useState();
+  const [canvas, setCanvas] = useState(null);
   window.canvas = canvas;
 
-  const [loading, setLoading] = useState(true);
+  // Setup reference to a new yDoc so that mutable link to the current yDoc is persistent
+  const { yDoc, yDocLoading } = useYDoc();
 
-  const yDoc = new Y.Doc();
+  // Get YMap which replicates the fabric data model
 
-  // Invoke fabric's canvas function upon initial render
+
   useEffect(() => {
-    const newCanvas = initCanvas();
-    console.log('new Canvas', newCanvas);
-    setCanvas(newCanvas);
-  }, [loading]);
 
+  }, [])
+
+  // Adds a somewhat unremarkable rectangle to the fabric canvas
   const add = (canvi) => {
     var rect = new fabric.Rect({
       left: 100,
       top: 50,
-      fill: 'lightgrey',
+      fill: '#7D4CDB',
       width: 200,
       height: 100,
       objectCaching: false,
-      stroke: 'darkgrey',
+      stroke: '#333333',
       strokeWidth: 3,
+      originX: 'left',
+      originY: 'top',
+      centeredRotation: true,
+      strokeUniform: true,
+      rx: 20,
+      ry: 20,
     });
 
     canvi.add(rect);
@@ -43,32 +53,12 @@ function App() {
     canvi.renderAll();
   };
 
-  // Initialize the fabric canvas
-  const initCanvas = () => {
-    return new fabric.Canvas('canvas', {
-      height: 800,
-      width: 1055,
-      backgroundColor: 'white',
-    });
-  };
-
-  // Create a rectangle
-  const addRect = (canvi) => {
-    console.log('addRect Called');
-  };
-
   return (
     <>
-      <OnHeader add={add} />
+      <HeaderNav add={add} />
       <Main gridArea="main" className="App-main">
-        {!loading ? (
-          <></>
-        ) : (
-          <div className="loaderContainer">
-            <ScaleLoader className="loader" height={90} width={10} color="#222222" />
-          </div>
-        )}
-        <canvas id="canvas" />
+        <Loader loading={yDocLoading} />
+        <Fabric loading={yDocLoading} canvas={canvas} setCanvas={setCanvas}/>
       </Main>
     </>
   );

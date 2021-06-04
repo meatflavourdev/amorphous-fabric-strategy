@@ -18,10 +18,13 @@ specifiers:
   react-scripts: 4.0.3
   styled-components: ^5.3.0
   web-vitals: ^1.0.1
+  y-indexeddb: ^9.0.6
+  y-webrtc: ^10.2.0
+  y-websocket: ^1.3.15
   yjs: ^13.5.9
 
 dependencies:
-  '@bit/davidhu2000.react-spinners.scale-loader': node.bit.dev/@bit/davidhu2000.react-spinners.scale-loader/0.5.1_react@17.0.2
+  '@bit/davidhu2000.react-spinners.scale-loader': 0.5.1_react@17.0.2
   '@hocuspocus/extension-logger': 1.0.0-alpha.28
   '@hocuspocus/extension-monitor': 1.0.0-alpha.52
   '@hocuspocus/extension-rocksdb': 1.0.0-alpha.54
@@ -38,6 +41,9 @@ dependencies:
   react-scripts: 4.0.3_react@17.0.2
   styled-components: 5.3.0_react-dom@17.0.2+react@17.0.2
   web-vitals: 1.1.2
+  y-indexeddb: 9.0.6_yjs@13.5.9
+  y-webrtc: 10.2.0
+  y-websocket: 1.3.15_yjs@13.5.9
   yjs: 13.5.9
 
 packages:
@@ -1446,6 +1452,17 @@ packages:
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+    dev: false
+
+  /@bit/davidhu2000.react-spinners.scale-loader/0.5.1_react@17.0.2:
+    resolution: {integrity: sha1-smB8fQt950rUWoyKdW3yC6ydy58=, tarball: davidhu2000.react-spinners.scale-loader/-/davidhu2000.react-spinners.scale-loader-0.5.1.tgz}
+    peerDependencies:
+      react: ^16.0.0
+    dependencies:
+      '@emotion/core': 10.1.1_react@17.0.2
+      prop-types: 15.7.2
+      react: 17.0.2
+      recompose: 0.30.0_react@17.0.2
     dev: false
 
   /@cnakazawa/watch/1.0.4:
@@ -3277,7 +3294,7 @@ packages:
   /babel-plugin-macros/2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
     dependencies:
-      '@babel/runtime': 7.12.1
+      '@babel/runtime': 7.14.0
       cosmiconfig: 6.0.0
       resolve: 1.20.0
     dev: false
@@ -3673,6 +3690,13 @@ packages:
 
   /buffer/5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+    dev: false
+
+  /buffer/6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -5134,6 +5158,10 @@ packages:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
     dev: false
 
+  /err-code/3.0.1:
+    resolution: {integrity: sha512-GiaH0KJUewYok+eeY05IIgjtAe4Yltygk9Wqp1V5yVWLdhf0hYZchRjNIT9bb0mSwRcIusT3cx7PJUf3zEIfUA==}
+    dev: false
+
   /errno/0.1.8:
     resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==}
     hasBin: true
@@ -6127,6 +6155,10 @@ packages:
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
+    dev: false
+
+  /get-browser-rtc/1.1.0:
+    resolution: {integrity: sha512-MghbMJ61EJrRsDe7w1Bvqt3ZsBuqhce5nrn/XAwgwOXhcsz53/ltdxOse1h/8eKXj5slzxdsz56g5rzOFSGwfQ==}
     dev: false
 
   /get-caller-file/2.0.5:
@@ -7586,7 +7618,7 @@ packages:
       jest-pnp-resolver: 1.2.2_jest-resolve@26.6.0
       jest-util: 26.6.2
       read-pkg-up: 7.0.1
-      resolve: 1.18.1
+      resolve: 1.20.0
       slash: 3.0.0
     dev: false
 
@@ -11329,6 +11361,20 @@ packages:
     dev: false
     optional: true
 
+  /simple-peer/9.11.0:
+    resolution: {integrity: sha512-qvdNu/dGMHBm2uQ7oLhQBMhYlrOZC1ywXNCH/i8I4etxR1vrjCnU6ZSQBptndB1gcakjo2+w4OHo7Sjza1SHxg==}
+    dependencies:
+      buffer: 6.0.3
+      debug: 4.3.1
+      err-code: 3.0.1
+      get-browser-rtc: 1.1.0
+      queue-microtask: 1.2.3
+      randombytes: 2.1.0
+      readable-stream: 3.6.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /simple-swizzle/0.2.2:
     resolution: {integrity: sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=}
     dependencies:
@@ -13022,6 +13068,15 @@ packages:
     engines: {node: '>=0.4'}
     dev: false
 
+  /y-indexeddb/9.0.6_yjs@13.5.9:
+    resolution: {integrity: sha512-8mdCYdzZDWS2lGiB9Reaz67ZqvnV6EXH/F7L+TmBC+3mWjIBrPw4UcI79nOhEOh+y9lHXzNpSda4YJ06M13F1A==}
+    peerDependencies:
+      yjs: ^13.0.0
+    dependencies:
+      lib0: 0.2.42
+      yjs: 13.5.9
+    dev: false
+
   /y-leveldb/0.1.0_yjs@13.5.9:
     resolution: {integrity: sha512-sMuitVrsAUNh+0b66I42nAuW3lCmez171uP4k0ePcTAJ+c+Iw9w4Yq3wwiyrDMFXBEyQSjSF86Inc23wEvWnxw==}
     peerDependencies:
@@ -13030,6 +13085,43 @@ packages:
       level: 6.0.1
       lib0: 0.2.42
       yjs: 13.5.9
+    dev: false
+
+  /y-protocols/1.0.5:
+    resolution: {integrity: sha512-Wil92b7cGk712lRHDqS4T90IczF6RkcvCwAD0A2OPg+adKmOe+nOiT/N2hvpQIWS3zfjmtL4CPaH5sIW1Hkm/A==}
+    dependencies:
+      lib0: 0.2.42
+    dev: false
+
+  /y-webrtc/10.2.0:
+    resolution: {integrity: sha512-YhHXJx46zc8En8Jpy5FUpAksAAndTV0dXbEKxJw/Zb8+Y6xVGaeB4+x44k0xo5i+SgZ00OjlXAQXgkJQesLc4Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      lib0: 0.2.42
+      simple-peer: 9.11.0
+      y-protocols: 1.0.5
+    optionalDependencies:
+      ws: 7.4.6
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /y-websocket/1.3.15_yjs@13.5.9:
+    resolution: {integrity: sha512-ZASGk9jCeUM6GOMxhFZSAZoP4ItSCmGchItAMG7GSiPY3hr1X19fCflRtnw2Z/y4/d1WoRTnwyuQb8g0l285jQ==}
+    hasBin: true
+    peerDependencies:
+      yjs: ^13.5.6
+    dependencies:
+      lib0: 0.2.42
+      lodash.debounce: 4.0.8
+      y-protocols: 1.0.5
+      yjs: 13.5.9
+    optionalDependencies:
+      ws: 6.2.2
+      y-leveldb: 0.1.0_yjs@13.5.9
     dev: false
 
   /y18n/4.0.3:
@@ -13106,18 +13198,4 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-    dev: false
-
-  node.bit.dev/@bit/davidhu2000.react-spinners.scale-loader/0.5.1_react@17.0.2:
-    resolution: {integrity: sha1-smB8fQt950rUWoyKdW3yC6ydy58=, registry: https://node.bit.dev/, tarball: https://node.bit.dev/davidhu2000.react-spinners.scale-loader/-/davidhu2000.react-spinners.scale-loader-0.5.1.tgz}
-    id: node.bit.dev/@bit/davidhu2000.react-spinners.scale-loader/0.5.1
-    name: davidhu2000.react-spinners.scale-loader
-    version: 0.5.1
-    peerDependencies:
-      react: ^16.0.0
-    dependencies:
-      '@emotion/core': 10.1.1_react@17.0.2
-      prop-types: 15.7.2
-      react: 17.0.2
-      recompose: 0.30.0_react@17.0.2
     dev: false

@@ -17,13 +17,20 @@ body {
   background-image: repeating-linear-gradient(45deg, #e3e3e3 0, #e3e3e3 1px, #ffffff 0, #ffffff 50%);
 }
 
+.canvas-container {
+ width: 100% !important;
+ height: 100% !important;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
 #canvas {
   background-color: #ffffff;
   border-radius: 7px;
   margin-top: 1em;
   border: 1px solid gray;
-  height: 800px;
-  width: 1055px;
+  margin: 2.5vw 2.5vw;
 }
 
 button {
@@ -39,4 +46,5 @@ button {
   align-items: center;
   justify-content: center;
   z-index: 1;
+  pointer-events: none;
 }
