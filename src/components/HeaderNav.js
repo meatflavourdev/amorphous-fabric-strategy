@@ -1,7 +1,7 @@
 import React from 'react';
 import Type from './icons/Type';
 
-import { Anchor, Box, Header, Nav, Heading, Button } from 'grommet';
+import { Anchor, Box, Header, Nav, Heading, Button, Menu, ResponsiveContext } from 'grommet';
 import { Cursor, Notes, Edit, Radial, StatusPlaceholder } from 'grommet-icons';
 
 function HeaderNav({ add }) {
@@ -12,11 +12,24 @@ function HeaderNav({ add }) {
           <Heading margin="none">YFabric</Heading>
         </Anchor>
       </Box>
-      <Nav direction="row" gap="medium">
-        <Button plain={false} icon={<Cursor />} onClick={() => console.log('Cursor')} primary={true}/>
-        <Button plain={false} icon={<Edit />} onClick={() => console.log('Draw')} />
-        <Button plain={false} icon={<StatusPlaceholder />} onClick={() => add(window.canvas)} />
-        <Button
+
+      <ResponsiveContext.Consumer>
+        {(responsive) =>
+          responsive === 'xsmall' ? (
+            <Menu
+              label="Click me"
+              items={[
+                { label: 'This is', onClick: () => {} },
+                { label: 'The Menu', onClick: () => {} },
+                { label: 'Component', onClick: () => {} },
+              ]}
+            />
+          ) : (
+            <Nav direction="row" gap={['xsmall', 'small'].includes(responsive) ? 'small' : 'medium'}>
+              <Button plain={false} icon={<Cursor />} onClick={() => console.log('Cursor')} primary={true} />
+              <Button plain={false} icon={<Edit />} onClick={() => console.log('Draw')} />
+              <Button plain={false} icon={<StatusPlaceholder />} onClick={() => add(window.canvas)} />
+              <Button
           plain={false}
           icon={<Radial />}
           onClick={() => {
@@ -28,11 +41,14 @@ function HeaderNav({ add }) {
                 icon={<Type />}
                 onClick={() => {
             console.log('Text');
-          }}
-        />
-      </Nav>
+                }}
+              />
+            </Nav>
+          )
+        }
+      </ResponsiveContext.Consumer>
     </Header>
-  )
+  );
 }
 
 export default HeaderNav;
