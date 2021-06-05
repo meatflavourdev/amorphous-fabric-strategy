@@ -3,11 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { grommet, Grommet } from 'grommet';
+import { Grommet } from 'grommet';
 import 'fabric-webpack'
 
+const theme = {
+  global: {
+    breakpoints: {
+      xsmall: {
+        value: 500,
+      },
+    },
+    font: {
+      family: "Inter",
+    }
+  }
+};
+
 ReactDOM.render(
-  <Grommet className="App" theme={grommet} full>
+  <Grommet className="App" theme={theme} full>
     <App />
   </Grommet>,
   document.getElementById('root')
