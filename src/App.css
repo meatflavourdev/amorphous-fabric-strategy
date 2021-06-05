@@ -25,12 +25,16 @@ body {
  align-items: center;
 }
 
-#canvas {
+#canvas, .upper-canvas {
   background-color: #ffffff;
   border-radius: 7px;
   margin-top: 1em;
   border: 1px solid gray;
   margin: 2.5vw 2.5vw;
+}
+
+.upper-canvas {
+  background: none;
 }
 
 button {
