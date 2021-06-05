@@ -1,4 +1,5 @@
 import React from 'react';
+import Type from './icons/Type';
 
 import { Anchor, Box, Header, Nav, Heading, Button } from 'grommet';
 import { Cursor, Notes, Edit, Radial, StatusPlaceholder } from 'grommet-icons';
@@ -21,11 +22,11 @@ function HeaderNav({ add }) {
           onClick={() => {
             console.log('Circle');
           }}
-        />
-        <Button
-          plain={false}
-          icon={<Notes />}
-          onClick={() => {
+              />
+              <Button
+                plain={false}
+                icon={<Type />}
+                onClick={() => {
             console.log('Text');
           }}
         />
