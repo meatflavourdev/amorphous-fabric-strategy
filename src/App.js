@@ -36,7 +36,7 @@ function App() {
       top: 50,
       fill: '#7D4CDB',
       width: 200,
-      height: 100,
+      height: 200,
       objectCaching: false,
       stroke: '#333333',
       strokeWidth: 3,
@@ -44,8 +44,8 @@ function App() {
       originY: 'top',
       centeredRotation: true,
       strokeUniform: true,
-      rx: 20,
-      ry: 20,
+      rx: 50,
+      ry: 50,
     });
 
     canvi.add(rect);
