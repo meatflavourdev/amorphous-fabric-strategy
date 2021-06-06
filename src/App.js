@@ -1,10 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Main } from 'grommet';
 import { fabric } from 'fabric';
-import * as Y from 'yjs'
-import { WebrtcProvider } from 'y-webrtc'
-import { WebsocketProvider } from 'y-websocket'
-import { IndexeddbPersistence } from 'y-indexeddb'
 import HeaderNav from './components/HeaderNav';
 import './App.css';
 import Loader from './components/Loader';
