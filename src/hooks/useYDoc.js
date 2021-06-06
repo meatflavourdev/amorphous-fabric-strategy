@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import * as Y from 'yjs'
 //import { WebrtcProvider } from 'y-webrtc'
 import { WebsocketProvider } from 'y-websocket'
-import { IndexeddbPersistence } from 'y-indexeddb'
+//import { IndexeddbPersistence } from 'y-indexeddb'
 
 export default function useYDoc() {
   const [yDocLoading, setyDocLoading] = useState(true);

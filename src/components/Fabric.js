@@ -22,6 +22,7 @@ export default function Fabric({ yDocLoading, canvas, setCanvas }) {
     function calcRadius(obj) {
       return Math.min(obj.width * obj.scaleX, obj.height * obj.scaleY) / 2;
     }
+    // Scale object radius relative to the scale of the object
     newCanvas.on('object:scaling', (e) => {
       console.log('object:scaling callback', e);
       const obj = e.target;
@@ -30,20 +31,16 @@ export default function Fabric({ yDocLoading, canvas, setCanvas }) {
       obj.rx = currentRadius / obj.scaleX;
       obj.ry = currentRadius / obj.scaleY;
     });
+    // Scale object stroke width relative to the scale of the object
+    newCanvas.on('object:scaling', (e) => {
+      console.log('object:scaling callback', e)
+        const obj = e.target;
+        obj.rx = 20 / obj.scaleX;
+        obj.ry = 20 / obj.scaleY;
+    })
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-
-  // Set event listeners when canvas is set
-  useEffect(() => {
-  // Scale object stroke width to match aspect ratio
-    canvas && canvas.on('object:scaling', (e) => {
-    console.log('object:scaling callback', e)
-      const obj = e.target;
-      obj.rx = 20 / obj.scaleX;
-      obj.ry = 20 / obj.scaleY;
-  })
-
-  }, [canvas]);
 
   // TODO: Resize canvas on window resize (add listener and resize function)
 

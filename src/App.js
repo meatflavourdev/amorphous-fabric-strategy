@@ -19,10 +19,9 @@ function App() {
   const { yDoc, yDocLoading } = useYDoc();
 
   // Get YMap which replicates the fabric data model
-
-
   useEffect(() => {
-
+    console.log('yDoc:', yDoc);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Adds a somewhat unremarkable rectangle to the fabric canvas
