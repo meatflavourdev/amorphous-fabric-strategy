@@ -24,9 +24,9 @@ export default function Fabric({ yDocLoading, canvas, setCanvas }) {
     }
     // Scale object radius relative to the scale of the object
     newCanvas.on('object:scaling', (e) => {
-      console.log('object:scaling callback', e);
+      //console.log('object:scaling callback', e);
       const obj = e.target;
-      console.log(`obj.height / 2: ${obj.height / 2} obj.rx: ${obj.rx} obj.width / 2: ${obj.width / 2} obj.ry: ${obj.ry}`);
+      //console.log(`obj.height / 2: ${obj.height / 2} obj.rx: ${obj.rx} obj.width / 2: ${obj.width / 2} obj.ry: ${obj.ry}`);
       const currentRadius = obj.height / 2 <= objectRadius / obj.scaleX || obj.width / 2 <= objectRadius / obj.scaleY ? calcRadius(obj) : objectRadius;
       obj.rx = currentRadius / obj.scaleX;
       obj.ry = currentRadius / obj.scaleY;

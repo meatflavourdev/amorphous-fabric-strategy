@@ -54,7 +54,7 @@ function App() {
     canvi.add(rect);
     canvi.setActiveObject(rect);
     canvi.renderAll();
-    console.log('rect:', rect.toObject())
+    //console.log('rect:', rect.toObject())
   };
 
   return (
