@@ -6,6 +6,7 @@ import { Cursor, Edit, StatusPlaceholder } from 'grommet-icons';
 import styled from 'styled-components';
 import useResponsive from '../../hooks/useResponsive';
 
+// Use button with custom border radius
 const ToolButton = styled(Button)`
   border-radius: 10px;
 `;
@@ -44,6 +45,7 @@ function ToolboxNavRow({ responsive, add, handleClick }) {
   );
 }
 
+// Toolbar row appears on mobile devices
 function ToolboxNavCol({ add, handleClick }) {
   return (
     <DropButton

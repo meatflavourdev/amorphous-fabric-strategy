@@ -39,8 +39,8 @@ function App() {
       originY: 'top',
       centeredRotation: true,
       strokeUniform: true,
-      rx: 50,
-      ry: 50,
+      rx: 20,
+      ry: 20,
     });
     rect.toObject = (function(toObject) {
       return function() {
