@@ -6,7 +6,7 @@ export default function Fabric({ yDocLoading, canvas, setCanvas }) {
   const initCanvas = () => {
     return new fabric.Canvas('canvas', {
       height: 800,
-      width: window.innerWidth * 0.95,
+      width: window.innerWidth,
       backgroundColor: 'white',
     });
   };
