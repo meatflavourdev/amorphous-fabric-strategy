@@ -7,6 +7,15 @@ function toolboxReducer(state, action) {
     SELECT_ARROW: () => {
       return {currentTool: 'arrow'}
     },
+    SELECT_PENCIL: () => {
+      return {currentTool: 'pencil'}
+    },
+    SELECT_SHAPE: () => {
+      return {currentTool: 'shape'}
+    },
+    SELECT_TEXT: () => {
+      return {currentTool: 'text'}
+    },
     default: () => {
       throw new Error(`Unsupported action type: ${action.type}`)
     },
