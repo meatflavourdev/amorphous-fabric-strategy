@@ -8,6 +8,7 @@ export default function Fabric({ yDocLoading, canvas, setCanvas }) {
       height: 800,
       width: window.innerWidth,
       backgroundColor: 'white',
+      stateful: true,
     });
   };
 

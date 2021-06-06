@@ -47,10 +47,19 @@ function App() {
       rx: 50,
       ry: 50,
     });
+    rect.toObject = (function(toObject) {
+      return function() {
+        return fabric.util.object.extend(toObject.call(this), {
+          name: this.name
+        });
+      };
+    })(rect.toObject);
+    rect.name = 'trololo';
 
     canvi.add(rect);
     canvi.setActiveObject(rect);
     canvi.renderAll();
+    console.log('rect:', rect.toObject())
   };
 
   return (
