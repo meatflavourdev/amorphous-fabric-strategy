@@ -19,8 +19,10 @@ const theme = {
   }
 };
 
+const darkMode = false;
+
 ReactDOM.render(
-  <Grommet className="App" theme={theme} full>
+  <Grommet className="App" theme={theme} themeMode={darkMode ? "dark" : "light"} full>
     <App />
   </Grommet>,
   document.getElementById('root')
