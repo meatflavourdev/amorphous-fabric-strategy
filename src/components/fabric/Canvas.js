@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { fabric } from 'fabric';
+import { useProject } from '../../layout/context/ProjectContext';
 
 export default function Canvas({ yDocLoading }) {
 
-
   let canvasFabric;
+
+  const { project, updateCanvas } = useProject();
 
   // Create Canvas object and configure
   function initCanvas () {
@@ -52,6 +54,7 @@ export default function Canvas({ yDocLoading }) {
     initCanvas();
     configureCanvas();
     responsiveCanvasResize();
+    updateCanvas(canvasFabric);
 
     // Scale object radius relative to the scale of the object
     const objectRadius = 10;
@@ -70,7 +73,8 @@ export default function Canvas({ yDocLoading }) {
 
     //
     canvasFabric.on('object:modified', (e) => {
-
+      console.log('object:modified',e , canvasFabric.toObject());
+      //canvasFabric.toObject();
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

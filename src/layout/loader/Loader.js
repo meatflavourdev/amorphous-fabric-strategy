@@ -1,8 +1,8 @@
 import ScaleLoader from '@bit/davidhu2000.react-spinners.scale-loader';
 
-export default function Loader({ yDocLoading }) {
+export default function Loader({ wsProvider }) {
   return (
-    !yDocLoading ? (
+    !wsProvider.synced ? (
       <></>
     ) : (
       <div className="loaderContainer">
