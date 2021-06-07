@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { fabric } from 'fabric';
+import { useProject } from '../../layout/context/ProjectContext';
 
 export default function Canvas({ yDocLoading }) {
 
-
   let canvasFabric;
+
+
 
   // Create Canvas object and configure
   function initCanvas () {
@@ -17,6 +19,7 @@ export default function Canvas({ yDocLoading }) {
       uniScaleTransform: false,
       backgroundColor: 'white',
       preserveObjectStacking: true,
+      isDrawingMode: false,
     });
   };
 
@@ -46,12 +49,14 @@ export default function Canvas({ yDocLoading }) {
 
   };
 
+  const { project, updateCanvas } = useProject();
 
   // Invoke fabric's canvas function upon initial render
   useEffect(() => {
     initCanvas();
     configureCanvas();
     responsiveCanvasResize();
+    updateCanvas(canvasFabric);
 
     // Scale object radius relative to the scale of the object
     const objectRadius = 10;
@@ -70,6 +75,13 @@ export default function Canvas({ yDocLoading }) {
 
     //
     canvasFabric.on('object:modified', (e) => {
+      const currentObjects = canvasFabric.toObject(['key']).objects;
+      const yObjects = window.project.yDoc ? window.project.yDoc.get('objects') : null;
+      console.log('canvas-- object:modified -- currentCanvas:', currentObjects);
+      yObjects && currentObjects.forEach((elm) => {
+        yObjects.set(elm.key, elm);
+      });
+      console.log('canvas-- yObjects', yObjects);
 
     });
 

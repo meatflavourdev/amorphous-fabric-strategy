@@ -5,6 +5,7 @@ import App from './layout/App';
 //import reportWebVitals from './reportWebVitals';
 import { Grommet } from 'grommet';
 import 'fabric-webpack'
+import ProjectProvider from './layout/context/ProjectContext';
 
 const theme = {
   global: {
@@ -23,7 +24,9 @@ const darkMode = false;
 
 ReactDOM.render(
   <Grommet className="App" theme={theme} themeMode={darkMode ? "dark" : "light"} full>
-    <App />
+    <ProjectProvider>
+      <App />
+    </ProjectProvider>
   </Grommet>,
   document.getElementById('root')
 );

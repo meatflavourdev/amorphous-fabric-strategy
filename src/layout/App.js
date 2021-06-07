@@ -1,38 +1,45 @@
 import React from 'react';
-import { Main } from 'grommet';
-import { fabric } from 'fabric';
+import * as Y from 'yjs';
+import {Main} from 'grommet';
+import {fabric} from 'fabric';
 import HeaderNav from './navheader/NavHeader';
 import './App.css';
 import Loader from './loader/Loader';
 import Canvas from '../components/fabric/Canvas';
 import useYDoc from '../components/hooks/useYDoc';
+import { useProject } from './context/ProjectContext';
+import id62 from 'id62';
 
 // Fabric lives in the global window object
 //const fabric = window.fabric
 
 function App() {
-  // Setup reference to a new yDoc so that mutable link to the current yDoc is persistent
-  const { yDoc, yDocLoading } = useYDoc();
+  // Setup project and yDoc
+  const { updateYjs } = useProject();
+  const { yDoc, wsProvider } = useYDoc();
 
   // Get YMap which replicates the fabric data model
-/*   React.useEffect(() => {
-    console.log('yDoc:', yDoc);
-    const yCanvas = yDoc.current.getMap('yCanvas');
+  React.useEffect(() => {
+    updateYjs(yDoc, wsProvider);
 
-    yCanvas.observeDeep((event) => {
-      window.canvas && window.canvas.loadFromJSON({
-        "json": "goes here",
-      }, window.canvas.renderAll.bind(window.canvas), function (o, object) {
-        // `o` = json object
-        // `object` = fabric.Object instance
-        // ... do some stuff ...
-      });
+    console.log('yDoc:', yDoc);
+    const yObjects = yDoc.getMap('objects');
+
+    yObjects.observeDeep(event => {
+      window.canvas &&
+        window.canvas.loadFromJSON(
+          {objects: Object.values(yObjects.toJSON(['key'])), version: "4.5.0", background: "white"},
+          window.canvas.renderAll.bind(window.canvas),
+          function (o, object) {
+            console.log('Yjs update-- rendering to canvas');
+          }
+        );
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
+  }, []);
 
   // Adds a somewhat unremarkable rectangle to the fabric canvas
-  const add = (canvi) => {
+  const add = canvi => {
     var rect = new fabric.Rect({
       left: 100,
       top: 50,
@@ -49,14 +56,14 @@ function App() {
       ry: 10,
       rx: 10,
     });
-    rect.toObject = (function(toObject) {
-      return function() {
+    rect.toObject = (function (toObject) {
+      return function () {
         return fabric.util.object.extend(toObject.call(this), {
-          name: this.name
+          key: this.key,
         });
       };
     })(rect.toObject);
-    rect.name = 'trololo';
+    rect.key = id62();
 
     canvi.add(rect);
     canvi.setActiveObject(rect);
@@ -68,8 +75,8 @@ function App() {
     <>
       <HeaderNav add={add} />
       <Main className="App-main">
-        <Loader loading={yDocLoading} />
-        <Canvas loading={yDocLoading} />
+        <Loader wsProvider={ wsProvider} />
+        <Canvas />
       </Main>
     </>
   );
