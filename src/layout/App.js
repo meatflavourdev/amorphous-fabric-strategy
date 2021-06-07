@@ -9,6 +9,7 @@ import Canvas from '../components/fabric/Canvas';
 import useYDoc from '../components/hooks/useYDoc';
 import { useProject } from './context/ProjectContext';
 import id62 from 'id62';
+import jsonpatch from 'fast-json-patch';
 
 // Fabric lives in the global window object
 //const fabric = window.fabric
@@ -26,6 +27,12 @@ function App() {
     const yObjects = yDoc.getMap('objects');
 
     yObjects.observeDeep(event => {
+      if (window.canvas) {
+        const diff = jsonpatch.compare(window.canvas.toJSON().objects, yObjects.toJSON(['key']));
+        console.log('diff:', diff)
+        //const updatedDocument = diff.reduce(jsonpatch.applyReducer, document);
+      }
+
       window.canvas &&
         window.canvas.loadFromJSON(
           {objects: Object.values(yObjects.toJSON(['key'])), version: "4.5.0", background: "white"},
