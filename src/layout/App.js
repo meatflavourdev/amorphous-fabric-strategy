@@ -1,28 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Main } from 'grommet';
 import { fabric } from 'fabric';
-import HeaderNav from './components/HeaderNav';
+import HeaderNav from './navheader/NavHeader';
 import './App.css';
-import Loader from './components/Loader';
-import Fabric from './components/Fabric';
-import useYDoc from './hooks/useYDoc';
+import Loader from './loader/Loader';
+import Canvas from '../components/fabric/Canvas';
+import useYDoc from '../components/hooks/useYDoc';
 
 // Fabric lives in the global window object
 //const fabric = window.fabric
 
 function App() {
-  // Fabric's canvas state
-  const [canvas, setCanvas] = useState(null);
-  window.canvas = canvas;
-
   // Setup reference to a new yDoc so that mutable link to the current yDoc is persistent
   const { yDoc, yDocLoading } = useYDoc();
 
   // Get YMap which replicates the fabric data model
-  useEffect(() => {
+/*   React.useEffect(() => {
     console.log('yDoc:', yDoc);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    const yCanvas = yDoc.current.getMap('yCanvas');
+
+    yCanvas.observeDeep((event) => {
+      window.canvas && window.canvas.loadFromJSON({
+        "json": "goes here",
+      }, window.canvas.renderAll.bind(window.canvas), function (o, object) {
+        // `o` = json object
+        // `object` = fabric.Object instance
+        // ... do some stuff ...
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); */
 
   // Adds a somewhat unremarkable rectangle to the fabric canvas
   const add = (canvi) => {
@@ -39,8 +46,8 @@ function App() {
       originY: 'top',
       centeredRotation: true,
       strokeUniform: true,
-      rx: 20,
-      ry: 20,
+      ry: 10,
+      rx: 10,
     });
     rect.toObject = (function(toObject) {
       return function() {
@@ -60,9 +67,9 @@ function App() {
   return (
     <>
       <HeaderNav add={add} />
-      <Main gridArea="main" className="App-main">
+      <Main className="App-main">
         <Loader loading={yDocLoading} />
-        <Fabric loading={yDocLoading} canvas={canvas} setCanvas={setCanvas}/>
+        <Canvas loading={yDocLoading} />
       </Main>
     </>
   );

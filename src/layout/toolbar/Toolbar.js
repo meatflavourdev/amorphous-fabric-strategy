@@ -4,7 +4,8 @@ import Type from '../icons/Type';
 import { Nav, Button, DropButton } from 'grommet';
 import { Cursor, Edit, StatusPlaceholder } from 'grommet-icons';
 import styled from 'styled-components';
-import useResponsive from '../../hooks/useResponsive';
+import useResponsive from '../../components/hooks/useResponsive';
+import { useToolbox } from '../context/ToolboxContext';
 
 // Use button with custom border radius
 const ToolButton = styled(Button)`
@@ -74,6 +75,8 @@ function ToolboxNavCol({ add, handleClick }) {
 function Toolbox({ add }) {
   // Get size and value relative to the window size/device and responsive context
   const responsive = useResponsive();
+
+  const toolbox = useToolbox();
 
   const handleClick = (name) => {
     console.log(`Click ${name}`);

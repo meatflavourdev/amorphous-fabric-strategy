@@ -25,9 +25,9 @@ export default function useYDoc() {
   websocketProvider.on('connect', () => setyDocLoading(false));
 
   //
-  useEffect(() => {
+/*   useEffect(() => {
 
-  }, [])
+  }, []) */
 
   return {yDoc, yDocLoading};
 }

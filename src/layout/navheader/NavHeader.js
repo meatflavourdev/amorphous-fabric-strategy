@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { Anchor, Box, Header, Heading } from 'grommet';
-import Toolbox from './toolbox/Toolbox'
+import Toolbox from '../toolbar/Toolbar'
+import { ToolboxProvider } from '../context/ToolboxContext';
 
-function HeaderNav({ add }) {
+function NavHeader({ add }) {
   return (
     <Header background="dark-1" pad={{ horizontal: 'medium', vertical: 'small', right: 'large' }} maxHeight="small">
       <Box direction="row" align="center" gap="medium">
@@ -11,9 +12,11 @@ function HeaderNav({ add }) {
           <Heading margin="none">YFabric</Heading>
         </Anchor>
       </Box>
-      <Toolbox add={add} />
+      <ToolboxProvider>
+        <Toolbox add={add} />
+      </ToolboxProvider>
     </Header>
   );
 }
 
-export default HeaderNav;
+export default NavHeader;

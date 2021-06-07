@@ -18,13 +18,14 @@ body {
 }
 
 .canvas-container {
- width: 100% !important;
- height: 100% !important;
- display: flex;
- justify-content: center;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  justify-content: center;
 }
 
-#canvas, .upper-canvas {
+#canvas,
+.upper-canvas {
   background-color: #ffffff;
   border: 1px solid gray;
   margin: 0;
