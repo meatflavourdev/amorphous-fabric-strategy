@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+//import React, {useRef} from 'react';
 import * as Y from 'yjs'
 //import { WebrtcProvider } from 'y-webrtc'
 import { WebsocketProvider } from 'y-websocket'
@@ -6,7 +6,7 @@ import { WebsocketProvider } from 'y-websocket'
 
 export default function useYDoc() {
   // Setup reference to a new yDoc so that mutable link to the current yDoc is persistent
-  const yDoc = useRef(new Y.Doc());
+  const yDoc = new Y.Doc();
 
   // this allows you to instantly get the (cached) documents data
 /*   const indexeddbProvider = new IndexeddbPersistence('YFabric',  yDoc.current);
@@ -17,7 +17,7 @@ export default function useYDoc() {
   //const webrtcProvider = new WebrtcProvider('YFabric',  yDoc.current);
 
   // Sync clients with the y-websocket provider
-  const wsProvider = new WebsocketProvider('ws://localhost:5000', 'YFabric', yDoc.current);
+  const wsProvider = new WebsocketProvider('ws://localhost:5000', 'default-03', yDoc);
 
   wsProvider.on('connect', () => console.log('Websocket connected'));
 

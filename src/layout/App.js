@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Y from 'yjs';
 import {Main} from 'grommet';
 import {fabric} from 'fabric';
 import HeaderNav from './navheader/NavHeader';
@@ -7,29 +8,30 @@ import Loader from './loader/Loader';
 import Canvas from '../components/fabric/Canvas';
 import useYDoc from '../components/hooks/useYDoc';
 import { useProject } from './context/ProjectContext';
+import id62 from 'id62';
 
 // Fabric lives in the global window object
 //const fabric = window.fabric
 
 function App() {
-  // Setup reference to a new yDoc so that mutable link to the current yDoc is persistent
+  // Setup project and yDoc
+  const { updateYjs } = useProject();
   const { yDoc, wsProvider } = useYDoc();
-  const { project, updateCanvas, updateCanvasObjects } = useProject(yDoc, wsProvider);
 
   // Get YMap which replicates the fabric data model
   React.useEffect(() => {
-    console.log('yDoc:', yDoc);
-    const yCanvas = yDoc.current.getMap('yCanvas');
+    updateYjs(yDoc, wsProvider);
 
-    yCanvas.observeDeep(event => {
+    console.log('yDoc:', yDoc);
+    const yObjects = yDoc.getMap('objects');
+
+    yObjects.observeDeep(event => {
       window.canvas &&
         window.canvas.loadFromJSON(
-          yCanvas.toJSON(),
+          {objects: Object.values(yObjects.toJSON(['key'])), version: "4.5.0", background: "white"},
           window.canvas.renderAll.bind(window.canvas),
           function (o, object) {
-            // `o` = json object
-            // `object` = fabric.Object instance
-            // ... do some stuff ...
+            console.log('Yjs update-- rendering to canvas');
           }
         );
     });
@@ -57,11 +59,11 @@ function App() {
     rect.toObject = (function (toObject) {
       return function () {
         return fabric.util.object.extend(toObject.call(this), {
-          name: this.name,
+          key: this.key,
         });
       };
     })(rect.toObject);
-    rect.name = 'trololo';
+    rect.key = id62();
 
     canvi.add(rect);
     canvi.setActiveObject(rect);

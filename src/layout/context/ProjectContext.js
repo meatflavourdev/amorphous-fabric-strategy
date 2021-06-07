@@ -32,7 +32,7 @@ export default function ProjectProvider({ children }) {
 }
 
 // Convenience hook for project context
-export function useProject(yDoc, wsProvider) {
+export function useProject() {
   const context = useContext( ProjectContext );
   if (!context) {
     throw new Error(`useProject must be used within a ProjectProvider`)
@@ -53,9 +53,9 @@ export function useProject(yDoc, wsProvider) {
     });
   }
 
-  React.useEffect(() => {
+/*   React.useEffect(() => {
     updateYjs(yDoc, wsProvider);
-  }, []);
+  }, []); */
 
   React.useEffect(() => {
     console.log('project:', project)
@@ -67,6 +67,8 @@ export function useProject(yDoc, wsProvider) {
 
     });
   } */
+  // Make project global
+  window.project = project;
 
-  return { project, updateCanvas };
+  return { project, updateCanvas, updateYjs };
 }
