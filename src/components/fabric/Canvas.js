@@ -1,27 +1,28 @@
-import React, { useEffect } from 'react';
-import { fabric } from 'fabric';
-import { useProject } from '../../layout/context/ProjectContext';
+import React, {useEffect} from 'react';
+import {fabric} from 'fabric';
+import {useProject} from '../../layout/context/ProjectContext';
 
-export default function Canvas({ yDocLoading }) {
-
+export default function Canvas({yDocLoading}) {
   let canvasFabric;
 
-
-
   // Create Canvas object and configure
-  function initCanvas () {
+  function initCanvas() {
     canvasFabric = window.canvas = new fabric.Canvas(canvasRef.current, {
       height: 840,
       width: window.innerWidth,
       x: window.innerWidth / 2,
       y: 420,
+      //offset
       stateful: true,
-      uniScaleTransform: false,
+      uniScaleTransform: true,
       backgroundColor: 'white',
       preserveObjectStacking: true,
+      imageSmoothingEnabled: true,
+      mozImageSmoothingEnabled: true,
+      enableRetinaScaling: false,
       isDrawingMode: false,
     });
-  };
+  }
 
   // Setup canvas properties that must be donw asynchronously
   function configureCanvas() {
@@ -38,18 +39,16 @@ export default function Canvas({ yDocLoading }) {
         color: 'red',
       });
     } */
-   /*canvasFabric.setBackgroundColor({source: bgPattern('logo512.png')}, canvasFabric.renderAll.bind(canvasFabric));
+    /*canvasFabric.setBackgroundColor({source: bgPattern('logo512.png')}, canvasFabric.renderAll.bind(canvasFabric));
     //canvasFabric.backgroundColor.repeat === 'repeat';
     console.log('initialized Canvas', canvasFabric); */
     //canvasFabric.renderAll();
-  };
+  }
 
   // TODO: Resize canvas on window resize (add listener and resize function)
-  function responsiveCanvasResize() {
+  function responsiveCanvasResize() {}
 
-  };
-
-  const { project, updateCanvas } = useProject();
+  const {project, updateCanvas} = useProject();
 
   // Invoke fabric's canvas function upon initial render
   useEffect(() => {
@@ -60,7 +59,7 @@ export default function Canvas({ yDocLoading }) {
 
     // Scale object radius relative to the scale of the object
     const objectRadius = 10;
-    canvasFabric.on('object:scaling', (e) => {
+    canvasFabric.on('object:scaling', e => {
       function calcRadius(obj) {
         return Math.min(obj.width * obj.scaleX, obj.height * obj.scaleY) / 2;
       }
@@ -73,17 +72,28 @@ export default function Canvas({ yDocLoading }) {
       obj.ry = currentRadius / obj.scaleY;
     });
 
-    //
-    canvasFabric.on('object:modified', (e) => {
+    function updateDataModel(){
       const currentObjects = canvasFabric.toObject(['key']).objects;
       const yObjects = window.project.yDoc ? window.project.yDoc.get('objects') : null;
       console.log('canvas-- object:modified -- currentCanvas:', currentObjects);
-      yObjects && currentObjects.forEach((elm) => {
-        yObjects.set(elm.key, elm);
-      });
+      yObjects &&
+        currentObjects.forEach(elm => {
+          yObjects.set(elm.key, elm);
+        });
       console.log('canvas-- yObjects', yObjects);
+    }
 
-    });
+    //
+    canvasFabric.on('object:modified', () => updateDataModel());
+/*     canvasFabric.on('object:moving', () => updateDataModel());
+    canvasFabric.on('object:rotating', () => updateDataModel());
+    canvasFabric.on('object:scaling', () => updateDataModel());
+    canvasFabric.on('object:skewing', () => updateDataModel()); */
+    canvasFabric.on('path:created', () => updateDataModel());
+    canvasFabric.on('object:moved', () => updateDataModel());
+    canvasFabric.on('object:rotated', () => updateDataModel());
+    canvasFabric.on('object:scaled', () => updateDataModel());
+    canvasFabric.on('object:skewed', () => updateDataModel());
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

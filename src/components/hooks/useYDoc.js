@@ -1,6 +1,6 @@
 //import React, {useRef} from 'react';
 import * as Y from 'yjs'
-//import { WebrtcProvider } from 'y-webrtc'
+import { WebrtcProvider } from 'y-webrtc'
 import { WebsocketProvider } from 'y-websocket'
 //import { IndexeddbPersistence } from 'y-indexeddb'
 
@@ -14,10 +14,10 @@ export default function useYDoc() {
     console.log('loaded data from indexed db');
   }); */
 
-  //const webrtcProvider = new WebrtcProvider('YFabric',  yDoc.current);
+  const webrtcProvider = new WebrtcProvider('YFabric',  yDoc.current);
 
   // Sync clients with the y-websocket provider
-  const wsProvider = new WebsocketProvider('ws://localhost:5000', 'default-03', yDoc);
+  const wsProvider = new WebsocketProvider('ws://localhost:5000', 'default-04', yDoc);
 
   wsProvider.on('connect', () => console.log('Websocket connected'));
 
