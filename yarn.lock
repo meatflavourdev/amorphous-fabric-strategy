@@ -5608,10 +5608,10 @@ fabric-webpack@^1.6.0-rc.1:
   resolved "https://registry.yarnpkg.com/fabric-webpack/-/fabric-webpack-1.6.0-rc.1.tgz#f15c1b43108ad3ebacf4f01f440133841a1635ef"
   integrity sha1-8VwbQxCK0+us9PAfRAEzhBoWNe8=
 
-fabric@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/fabric/-/fabric-4.5.0.tgz#fd2d1af7fa715d77ae61c264d89c4c0616d9ad3f"
-  integrity sha512-flad9Bs67l/2ko2Bcob6tIzvtnViLDUdWsFzbBc4icIvZG1+a7QJIpDyGuFHf3sQ0XRdezWwnzz4Oqp8RYveGw==
+fabric@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/fabric/-/fabric-4.6.0.tgz#bd11c2baf165db2c97e4d05740d931586cb26bbb"
+  integrity sha512-MhJXCD/ZugOGV5aPHIG0MY1q2EfrlzC2sasrAHj0HHXN50JTe1bHFrlRdkXBijCJ0dG81fGu/A/Pct9DyuwCzQ==
   optionalDependencies:
     canvas "^2.6.1"
     jsdom "^15.2.1"
