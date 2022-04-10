@@ -9,7 +9,7 @@
     "@hocuspocus/extension-monitor": "^1.0.0-alpha.52",
     "@hocuspocus/extension-rocksdb": "^1.0.0-alpha.54",
     "@hocuspocus/server": "^1.0.0-alpha.53",
-    "@testing-library/jest-dom": "^5.13.0",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "fabric": "^4.5.0",
