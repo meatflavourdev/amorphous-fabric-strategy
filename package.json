@@ -35,11 +35,11 @@
         "prettier-airbnb-config": "^1.0.0"
     },
     "scripts": {
-        "start": "npx concurrently \"HOST=0.0.0.0 PORT=5000 YPERSISTENCE='./localData' y-websocket-server\" \"react-scripts start\"",
+        "start": "npx concurrently \"HOST=0.0.0.0 PORT=5000 YPERSISTENCE='./localData' y-websocket-server\" \"next start\"",
         "react": "react-scripts start",
         "test": "react-scripts test",
         "server": "node ./src/server/server.js",
-        "build": "react-scripts build",
+        "build": "next build",
         "yserver": "HOST=0.0.0.0 PORT=5000 YPERSISTENCE='./localData' y-websocket-server"
     },
     "eslintConfig": {

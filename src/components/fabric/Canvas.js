@@ -85,10 +85,10 @@ export default function Canvas({yDocLoading}) {
 
     //
     canvasFabric.on('object:modified', () => updateDataModel());
-/*     canvasFabric.on('object:moving', () => updateDataModel());
+    canvasFabric.on('object:moving', () => updateDataModel());
     canvasFabric.on('object:rotating', () => updateDataModel());
     canvasFabric.on('object:scaling', () => updateDataModel());
-    canvasFabric.on('object:skewing', () => updateDataModel()); */
+    canvasFabric.on('object:skewing', () => updateDataModel());
     canvasFabric.on('path:created', () => updateDataModel());
     canvasFabric.on('object:moved', () => updateDataModel());
     canvasFabric.on('object:rotated', () => updateDataModel());

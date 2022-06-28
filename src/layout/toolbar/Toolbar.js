@@ -25,7 +25,12 @@ function ToolboxNavRow({ responsive, add, handleClick }) {
         primary={true}
         label={responsiveLabel('Arrow')}
       />
-      <ToolButton plain={false} icon={<Edit />} onClick={() => handleClick('Draw')} label={responsiveLabel('Pencil')} />
+      <ToolButton
+        plain={false}
+        icon={<Edit />}
+        onClick={() => handleClick('Draw')}
+        label={responsiveLabel('Pencil')}
+      />
       <ToolButton
         plain={false}
         icon={<StatusPlaceholder />}
@@ -36,9 +41,7 @@ function ToolboxNavRow({ responsive, add, handleClick }) {
       <ToolButton
         plain={false}
         icon={<Type />}
-        onClick={() => {
-          handleClick('Text');
-        }}
+        onClick={() => {handleClick('Text')}}
         label={responsiveLabel('Text')}
         size="large"
       />
