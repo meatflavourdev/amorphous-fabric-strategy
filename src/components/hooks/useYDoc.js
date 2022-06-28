@@ -14,7 +14,7 @@ export default function useYDoc() {
     console.log('loaded data from indexed db');
   }); */
 
-  const webrtcProvider = new WebrtcProvider('YFabric',  yDoc.current);
+  const webrtcProvider = new WebrtcProvider('YFabric',  yDoc);
 
   // Sync clients with the y-websocket provider
   const wsProvider = new WebsocketProvider('ws://localhost:5000', 'default-04', yDoc);
