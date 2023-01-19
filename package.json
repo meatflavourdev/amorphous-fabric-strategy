@@ -6,7 +6,7 @@
     "dependencies": {
         "@bit/davidhu2000.react-spinners.scale-loader": "^0.5.1",
         "@hocuspocus/extension-logger": "^1.0.0-alpha.28",
-        "@hocuspocus/extension-monitor": "^1.0.0-alpha.52",
+        "@hocuspocus/extension-monitor": "^1.0.0",
         "@hocuspocus/extension-rocksdb": "^1.0.0-alpha.54",
         "@hocuspocus/server": "^1.0.0-alpha.53",
         "@testing-library/jest-dom": "^5.13.0",
